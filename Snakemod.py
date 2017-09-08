@@ -22,7 +22,7 @@ from pygame.locals import *
 
 
 ## Impostazioni Generali Manuali
-FPS                  = 20    # velocità di gioco
+FPS                  = 20    # velocita' di gioco
 ALTEZZAFINESTRA      = 600   # altezza   finestra (600 per gioco a livelli)
 LUNGHEZZAFINESTRA    = 1000  # lunghezza finestra (1000 per gioco a livelli)
 DIMENSIONECELLE      = 20    # dimensione celle
@@ -68,7 +68,7 @@ COLOREMURO          = BLU
 COLOREMUROINTERNO   = AZZURRO
 TESTA               = 0
 SU                  = 'Su'
-GIU                 = 'Giù'
+GIU                 = 'Giu'
 SX                  = 'Sinistra'
 DX                  = 'Destra'
 
@@ -167,7 +167,7 @@ def avviaGiocoStandard():
         ## Controlla se il Verme Mangia una Mela 
         if  coordinateVerme[TESTA]['x'] == mela['x']\
         and coordinateVerme[TESTA]['y'] == mela['y']:
-            ## Se sì -> Setta Nuova Mela
+            ## Se si' -> Setta Nuova Mela
             mela = prendiCasellaCasuale(muri,coordinateVerme) 
         else:
             ## Se no -> Toglie Coda
@@ -195,7 +195,7 @@ def avviaGiocoStandard():
         disegnaMela(mela)                             # Mela
         scriviPunteggio(len(coordinateVerme) - 3)     # Punteggio
         scriviTempo(tempo)                            # Tempo
-        scriviGioco()                                 # Modalità di Gioco
+        scriviGioco()                                 # Modalita' di Gioco
 
         ## Aggiornamenti
         pygame.display.update()
@@ -211,7 +211,13 @@ def avviaGiocoStandard():
 
 ## Funzione di Gioco A Livelli (Caselle 50*30)
 def avviaGiocoLivelli():
-
+ 
+    ## Si sposta nella directory dello script
+    ## Fatto perché con alcuni sistemi lo script non viene eseguito
+    ## nella sua cartella, quindi il file snakeLivelli.txt non veniva trovato
+    abspath = os.path.abspath(__file__)
+    dname = os.path.dirname(abspath)
+    os.chdir(dname)
 
     ## Apre Legge e Interpreta il File Livelli
     livelli = leggiFileLivelli("snakeLivelli.txt")
@@ -230,7 +236,7 @@ def avviaGiocoLivelli():
         risoluzione,tempo = livello(livelloCorrente,vite,tempo,livelli)
         livelliSuperati.append(risoluzione)
 
-        ## Controlla se il Livello è stato Superato
+        ## Controlla se il Livello e' stato Superato
 
         if not False in livelliSuperati:
             if livelloCorrente%5==4:
@@ -337,7 +343,7 @@ def livello(livello,vite,tempoPrecedente,livelli):
         ## Controlla se il Verme Mangia una Mela 
         if  coordinateVerme[TESTA]['x'] == mela['x']\
         and coordinateVerme[TESTA]['y'] == mela['y']:
-            ## Se sì -> Setta Nuova Mela
+            ## Se si' -> Setta Nuova Mela
             mela = prendiCasellaCasuale(muri,coordinateVerme) 
         else:
             ## Se no -> Toglie Coda
@@ -378,7 +384,7 @@ def livello(livello,vite,tempoPrecedente,livelli):
         pygame.display.update()
         OROLOGIO.tick(FPS)
 
-    ## Controlla se il Livello è stato Superato
+    ## Controlla se il Livello e' stato Superato
     if   len(coordinateVerme)<=SUPERAMENTO+2:
         return False, tempoPrecedente+tempoGioco
     else:
@@ -565,7 +571,7 @@ def scriviVite(punteggio):
 
 
 
-## Mostra ila Modalità di Gioco
+## Mostra la Modalita' di Gioco
 def scriviGioco():
     if BORDI:
         areaPunteggio = CARATTEREBASE.render('Bordi On', True, COLOREPUNTEGGIO)
@@ -697,7 +703,7 @@ def disegnaGriglia():
 def leggiFileLivelli(nomeFile):
 
     # Controlla l'Esistenza del File e lo Apre
-    assert os.path.exists(nomeFile), 'Non è Stato trovato il File: %s' % (nomeFile)
+    assert os.path.exists(nomeFile), 'Non e\' Stato trovato il File: %s' % (nomeFile)
     fileMappe = open(nomeFile, 'r')
     # Legge una Linea alla Volta e le Separa e Chiude il File
     contenutoFile = fileMappe.readlines() + ['\r\n']
@@ -732,7 +738,7 @@ def leggiFileLivelli(nomeFile):
         elif linea == '' and len(lineeMappa) > 0:
             
 
-            # Trova La Line più Lunga
+            # Trova La Line piu' Lunga
             lunghezzaMassima = -1
             for i in range(len(lineeMappa)):
                 if len(lineeMappa[i]) > lunghezzaMassima:
@@ -763,16 +769,16 @@ def leggiFileLivelli(nomeFile):
             for x in range(lunghezzaMassima):
                 for y in range(len(oggettiMappa[x])):
 
-                    # '@' è la Testa del serpente
+                    # '@' e' la Testa del serpente
                     if oggettiMappa[x][y] in ('@'):
                         xInizio = x-1
                         yInizio = y-1
 
-                    # '$' è un Muro    
+                    # '$' e' un Muro    
                     if oggettiMappa[x][y] in ('$'):
                         muri.append([x-1, y-1])
 
-                    # '$' è un Muro, "%" è un Punto di No Spawn
+                    # '$' e' un Muro, "%" e' un Punto di No Spawn
                     if oggettiMappa[x][y] in ('$', '%'):
                         noSpawn.append([x-1, y-1])
 

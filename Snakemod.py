@@ -213,7 +213,7 @@ def avviaGiocoStandard():
 def avviaGiocoLivelli():
  
     ## Si sposta nella directory dello script
-    ## Fatto perché con alcuni sistemi lo script non viene eseguito
+    ## Fatto perche' con alcuni sistemi lo script non viene eseguito
     ## nella sua cartella, quindi il file snakeLivelli.txt non veniva trovato
     abspath = os.path.abspath(__file__)
     dname = os.path.dirname(abspath)

@@ -347,6 +347,17 @@ def livello(livello,vite,tempoPrecedente,livelli):
                 elif evento.key == K_ESCAPE:
                     termina()
 
+        ## Muove il Verme Aggiungendo una Nuova Testa
+        if direzione == SU:
+            nuovaTesta = {'x': coordinateVerme[TESTA]['x'], 'y': coordinateVerme[TESTA]['y'] - 1}
+        elif direzione == GIU:
+            nuovaTesta = {'x': coordinateVerme[TESTA]['x'], 'y': coordinateVerme[TESTA]['y'] + 1}
+        elif direzione == SX:
+            nuovaTesta = {'x': coordinateVerme[TESTA]['x'] - 1, 'y': coordinateVerme[TESTA]['y']}
+        elif direzione == DX:
+            nuovaTesta = {'x': coordinateVerme[TESTA]['x'] + 1, 'y': coordinateVerme[TESTA]['y']}
+        coordinateVerme.insert(0, nuovaTesta)
+
         ## Controlla se il Verme si Colpisce
         for coordinataVerme in coordinateVerme[1:]:
             if  coordinataVerme['x'] == coordinateVerme[TESTA]['x']\
@@ -376,19 +387,6 @@ def livello(livello,vite,tempoPrecedente,livelli):
         else:
             ## Se no -> Toglie Coda
             del coordinateVerme[-1]
-
-
-
-        ## Muove il Verme Aggiungendo una Nuova Testa
-        if   direzione == SU:
-            nuovaTesta = {'x': coordinateVerme[TESTA]['x'],     'y': coordinateVerme[TESTA]['y'] - 1}
-        elif direzione == GIU:
-            nuovaTesta = {'x': coordinateVerme[TESTA]['x'],     'y': coordinateVerme[TESTA]['y'] + 1}
-        elif direzione == SX:
-            nuovaTesta = {'x': coordinateVerme[TESTA]['x'] - 1, 'y': coordinateVerme[TESTA]['y']}
-        elif direzione == DX:
-            nuovaTesta = {'x': coordinateVerme[TESTA]['x'] + 1, 'y': coordinateVerme[TESTA]['y']}
-        coordinateVerme.insert(0, nuovaTesta)
 
         ## Istruzioni Cronometro
         tempoGioco = time.time()-tempoInizio

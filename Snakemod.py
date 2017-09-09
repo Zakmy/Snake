@@ -2,7 +2,11 @@
 # Inizio Codice
 ###############################################################################
 
-
+## \todo: fullscreen
+## \todo: rendere i livelli indipendenti
+## \todo: pausa
+## \todo: creare nemiki
+## \todo: selezionare e creare livelli
 
 import random
 import pygame
@@ -880,6 +884,5 @@ def schermoIniziale():
     ALTEZZAFINESTRA     = ALTEZZAFINESTRABASE
     LUNGHEZZAFINESTRA   = LUNGHEZZAFINESTRABASE
     return pygame.display.set_mode((dimensioniSchermo))
-
 
 

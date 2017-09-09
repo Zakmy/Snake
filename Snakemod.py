@@ -839,5 +839,47 @@ if __name__ == '__main__':
 # Fine Codice
 ###############################################################################
 
+## Cambia Dimensione Finestra
+def ridimensiona():
+    global SCHERMOINTERO
+    global CAMERAX, CAMERAY
+    if SCHERMOINTERO:
+        CAMERAX, CAMERAY = CAMERAX+6*DIMENSIONECELLE, CAMERAY+3*DIMENSIONECELLE
+        AREADIGIOCO = schermoNormale()
+    if not SCHERMOINTERO:
+        CAMERAX, CAMERAY = CAMERAX-6*DIMENSIONECELLE, CAMERAY-3*DIMENSIONECELLE
+        AREADIGIOCO = schermoIntero()
+    SCHERMOINTERO = not SCHERMOINTERO
+
+
+
+## Finestra da Normale a Full
+def schermoIntero():
+    global ALTEZZAFINESTRA, LUNGHEZZAFINESTRA
+    dimensioniSchermo   =  LUNGHEZZASCHERMO, ALTEZZASCHERMO                 
+    LUNGHEZZAFINESTRA   =  LUNGHEZZASCHERMO
+    ALTEZZAFINESTRA     =  ALTEZZASCHERMO
+    return pygame.display.set_mode((dimensioniSchermo))
+
+
+
+## Finestra da Full a Normale
+def schermoNormale():
+    global ALTEZZAFINESTRA, LUNGHEZZAFINESTRA
+    dimensioniSchermo   = LUNGHEZZAFINESTRABASE, ALTEZZAFINESTRABASE
+    ALTEZZAFINESTRA     = ALTEZZAFINESTRABASE
+    LUNGHEZZAFINESTRA   = LUNGHEZZAFINESTRABASE
+    return pygame.display.set_mode((dimensioniSchermo))
+
+
+
+## Finestra Normale alla Prima Apertura
+def schermoIniziale():
+    global ALTEZZAFINESTRA, LUNGHEZZAFINESTRA
+    dimensioniSchermo   = LUNGHEZZAFINESTRABASE, ALTEZZAFINESTRABASE
+    ALTEZZAFINESTRA     = ALTEZZAFINESTRABASE
+    LUNGHEZZAFINESTRA   = LUNGHEZZAFINESTRABASE
+    return pygame.display.set_mode((dimensioniSchermo))
+
 
 

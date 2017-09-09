@@ -71,6 +71,7 @@ SU                  = 'Su'
 GIU                 = 'Giu'
 SX                  = 'Sinistra'
 DX                  = 'Destra'
+LIVELLOINIZIALE     = 0
 
 
 ###############################################################################
@@ -224,7 +225,7 @@ def avviaGiocoLivelli():
 
     ## Elenco livelli Superati
     livelliSuperati = []
-    livelloCorrente = 0
+    livelloCorrente = LIVELLOINIZIALE
     vite = VITE - 1
     tempo = 0
 

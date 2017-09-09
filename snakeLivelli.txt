@@ -8,7 +8,7 @@
 ;
 ; E' Necessario uno ed uno solo Spazio dopo ogni Livello
 ;
-; Può essere utile ->
+; Puï¿½ essere utile ->
 ; 12345678901234567890123456789012345678901234567890
 ; Livelli ->
 

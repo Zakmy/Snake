@@ -29,7 +29,7 @@ DIMENSIONECELLE      = 20    # dimensione celle
 BORDI                = False # presenza bordi
 LIVELLI              = True  # presenza livelli
 LABIRINTI            = 15    # livelli presenti
-SUPERAMENTO          = 10    # punteggio per passare di livello
+SUPERAMENTO          = 0    # punteggio per passare di livello
 VITE                 = 5     # vite nel gioco a livelli
 
 ## Impostazioni Automatiche
@@ -287,11 +287,11 @@ def livello(livello,vite,tempoPrecedente,livelli):
 
 
     ## Inizializza la Mela e i Muri e il Verme
-    xinizio = livelli[0]["testaSerpente"][0]
-    yinizio = livelli[0]["testaSerpente"][0]
-    muri    = livelli[0]["muri"]
-    noSpawn = livelli[0]["noSpawn"]
-    xinizio, yinizio, muri, noSpawn = labirinti(livello)
+    xinizio = livelli[livello]["testaSerpente"][0]
+    yinizio = livelli[livello]["testaSerpente"][0]
+    muri    = livelli[livello]["muri"]
+    noSpawn = livelli[livello]["noSpawn"]
+    #xinizio, yinizio, muri, noSpawn = labirinti(livello)
     labirinto = creaLabirinto(muri)
     direzione = DX
     coordinateVerme = [{'x': xinizio,     'y': yinizio},

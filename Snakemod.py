@@ -1,13 +1,3 @@
-###############################################################################
-# Inizio Codice
-###############################################################################
-
-## \todo: fullscreen
-## \todo: rendere i livelli indipendenti
-## \todo: pausa
-## \todo: creare nemiki
-## \todo: selezionare e creare livelli
-
 import random
 import pygame
 import sys
@@ -15,20 +5,9 @@ import time
 import os
 from pygame.locals import *
 
-## 1000 tick = 1000 millisecondi = 1 secondo
-
-
-
-###############################################################################
-# Impostazioni Generali di Gioco
-###############################################################################
-
-
-
-## Impostazioni Generali Manuali
-FPS                  = 20    # velocita' di gioco
-ALTEZZAFINESTRA      = 600   # altezza   finestra (600 per gioco a livelli)
-LUNGHEZZAFINESTRA    = 1000  # lunghezza finestra (1000 per gioco a livelli)
+FPS                  = 30    # velocita' di gioco
+ALTEZZAFINESTRA      = 300   # altezza   finestra (600 per gioco a livelli)
+LUNGHEZZAFINESTRA    = 500  # lunghezza finestra (1000 per gioco a livelli)
 DIMENSIONECELLE      = 20    # dimensione celle
 BORDI                = False # presenza bordi
 LIVELLI              = True  # presenza livelli
@@ -77,14 +56,6 @@ SX                  = 'Sinistra'
 DX                  = 'Destra'
 LIVELLOINIZIALE     = 0
 
-
-###############################################################################
-# Avviamento del Programma e Costruzione Finestre
-###############################################################################
-
-
-
-## Programma Principale
 def main():
 
     ## Inizializzazione e Variabili Globali
@@ -108,14 +79,6 @@ def main():
             mostraSchermataFinale(avviaGiocoLivelli())
 
 
-
-###############################################################################
-# Avviamento Gioco Standard senza Livelli di Tipo Bordi o Senza Bordi
-###############################################################################
-
-
-
-## Funzione di Gioco Standard
 def avviaGiocoStandard():
 
     ## Inizializza il Verme
@@ -497,7 +460,8 @@ def creaLabirinto(muri):
 
 
 ###############################################################################
-# Funzioni di Calcolo
+# minchia se è difficle
+
 ###############################################################################
 
 
